@@ -1,10 +1,12 @@
-package com.example.mymoveapplication
+package com.example.mymoveapplication.ui.main.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.mymoveapplication.data.pojo.movie.MoveData
+import com.example.mymoveapplication.R
 import kotlinx.android.synthetic.main.move_item.view.*
 
 class MoveAdapter(

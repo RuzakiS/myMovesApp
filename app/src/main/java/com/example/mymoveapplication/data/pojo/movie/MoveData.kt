@@ -1,4 +1,4 @@
-package com.example.mymoveapplication
+package com.example.mymoveapplication.data.pojo.movie
 
 
 import java.io.Serializable
