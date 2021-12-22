@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mymoveapplication.data.pojo.movie.MoveData
-import com.example.mymoveapplication.R
 import com.example.mymoveapplication.domain.usecase.GetMoviesUseCase
 
 open class MainViewModel(
