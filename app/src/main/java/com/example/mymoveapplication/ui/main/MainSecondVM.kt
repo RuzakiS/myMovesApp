@@ -15,9 +15,10 @@ open class MainSecondVM(
 
     fun moveSecondLiveData(id: String) {
         getMovieDetailsUseCase.execute(
+            id = id,
             callback = { moveList ->
                 _secondLiveData.postValue(moveList)
-            }, id = id)
+            })
     }
 
 }

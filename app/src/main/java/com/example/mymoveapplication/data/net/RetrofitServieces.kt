@@ -16,9 +16,8 @@ interface RetrofitServieces {
 
     @GET("movie/{movie_id}")
     fun getCurrentMovie(
-        @Query("api_key") apiKey: String,
-        @Path("movie_id") movieId: String
-
+        @Path("movie_id") movieId: String,
+        @Query("api_key") apiKey: String
     ): Call<MovieDetails>
 
 }

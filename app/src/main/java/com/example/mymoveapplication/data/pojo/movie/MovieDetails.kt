@@ -13,14 +13,14 @@ data class MovieDetails(
     @SerializedName("backdrop_path")
     val backdropPath: String? = null,
 
-    @SerializedName("belongs_to_collection")
-    val belongsToCollection: String? = null,
+//    @SerializedName("belongs_to_collection")
+//    val belongsToCollection: String? = null,
 
     @SerializedName("budget")
     val budget: Int? = null,
 
-    @SerializedName("genres")
-    val genres: Array<String>? = null,
+//    @SerializedName("genres")
+//    val genres: Array<String>? = null,
 
     @SerializedName("homepage")
     val homepage: String? = null,
@@ -40,14 +40,14 @@ data class MovieDetails(
     @SerializedName("overview")
     val overview: String? = null,
 
-    @SerializedName("poster_path")
+    @SerializedName("popularity")
     val popularity: Double? = null,
 
     @SerializedName("poster_path")
     val posterPath: String? = null,
 
-    @SerializedName("production_companies")
-    val productionCompanies: Array<String>? = null,
+//    @SerializedName("production_companies")
+//    val productionCompanies: Array<String>? = null,
 
     @SerializedName("release_date")
     val releaseDate: String? = null,
@@ -58,8 +58,8 @@ data class MovieDetails(
     @SerializedName("runtime")
     val runtime: Int? = null,
 
-    @SerializedName("spoken_languages")
-    val spokenLanguages: Array<String>? = null,
+//    @SerializedName("spoken_languages")
+//    val spokenLanguages: Array<String>? = null,
 
     @SerializedName("status")
     val status: String? = null,

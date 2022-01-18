@@ -50,7 +50,7 @@ class MovieRepoImpl : MovieRepo {
         id: String,
         callback: (MovieDetails) -> Unit
     ) {
-        RetrofitClient.getClient().getCurrentMovie("ebd618f162ffeafbcae3dab64b5aa6a2",id)
+        RetrofitClient.getClient().getCurrentMovie(id,"ebd618f162ffeafbcae3dab64b5aa6a2")
             .enqueue(object : Callback<MovieDetails> {
                 override fun onResponse(
                     call: Call<MovieDetails>,
@@ -68,6 +68,7 @@ class MovieRepoImpl : MovieRepo {
                 }
 
                 override fun onFailure(call: Call<MovieDetails>, t: Throwable) {
+                    t.printStackTrace()
 //                    errorCallback(t)
                 }
 
