@@ -15,10 +15,19 @@ open class MainViewModel(
     val movesLD: LiveData<List<MoveData>>
         get() = _movesLD
 
+    private val _errorExp: MutableLiveData<Throwable> = MutableLiveData()
+    val errorExp: LiveData<Throwable>
+        get() =_errorExp
+
 
     fun moveList() {
-        val listHardCode = getMoviesUseCase.execute()
-        _movesLD.postValue(listHardCode)
+        getMoviesUseCase.execute(
+            callback = {  moveList ->
+                _movesLD.postValue(moveList)
+            },
+            errorCallBack = { errorThr ->
+                _errorExp.postValue(errorThr)
+            })
     }
 
 }
