@@ -12,6 +12,7 @@ import com.example.mymoveapplication.data.pojo.movie.MoveData
 import com.example.mymoveapplication.ui.main.adapter.MoveAdapter
 import com.example.mymoveapplication.ui.utlis.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,8 +22,10 @@ class MainActivity : AppCompatActivity() {
 
 //        this::toMainActivity2)
 
-    private var viewModel: MainViewModel? = null
-    private var viewModelFactory: ViewModelFactory? = null
+    private val viewModel: MainViewModel by viewModel<MainViewModel>()
+
+
+//    private var viewModelFactory: ViewModelFactory? = null
 
 //    lateinit var a :String
 
@@ -33,8 +36,8 @@ class MainActivity : AppCompatActivity() {
 
 //        this::a.isLateinit
 
-        viewModelFactory = ViewModelFactory()
-        viewModel = ViewModelProvider(this, viewModelFactory!!).get(MainViewModel::class.java)
+//        viewModelFactory = ViewModelFactory()
+//        viewModel = ViewModelProvider(this, viewModelFactory!!).get(MainViewModel::class.java)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter

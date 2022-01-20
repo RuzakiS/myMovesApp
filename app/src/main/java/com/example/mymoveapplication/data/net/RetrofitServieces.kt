@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface RetrofitServieces {
 
-    @GET("movie/popular?")
+    @GET("movie/popular")
     fun getMovieList(
         @Query("api_key") apiKey: String
     ): Call<MovieData>

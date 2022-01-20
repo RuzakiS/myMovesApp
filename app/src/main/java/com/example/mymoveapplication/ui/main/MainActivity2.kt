@@ -4,22 +4,18 @@ package com.example.mymoveapplication.ui.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.mymoveapplication.R
 import com.example.mymoveapplication.data.pojo.movie.MovieDetails
-import com.example.mymoveapplication.domain.usecase.GetMovieDetailsUseCase
-import com.example.mymoveapplication.ui.utlis.ViewModelFactory
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main2.*
 import kotlinx.android.synthetic.main.activity_main2.view.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainActivity2 : AppCompatActivity() {
 
-    private var viewSecondVM: MainSecondVM? = null
-    private var viewModelFactory: ViewModelFactory? = null
+    private val viewSecondVM: MainSecondVM by viewModel<MainSecondVM>()
+//    private var viewModelFactory: ViewModelFactory? = null
 
 
     private val imgBaseUrl = "https://image.tmdb.org/t/p/original"
@@ -42,8 +38,8 @@ class MainActivity2 : AppCompatActivity() {
 
         var movieID = intent.getStringExtra(KEY_TO_SECOND_ACTIVITY)
 
-        viewModelFactory = ViewModelFactory()
-        viewSecondVM = ViewModelProvider(this, viewModelFactory!!).get(MainSecondVM::class.java)
+//        viewModelFactory = ViewModelFactory()
+//        viewSecondVM = ViewModelProvider(this, viewModelFactory!!).get(MainSecondVM::class.java)
 
 
         viewSecondVM!!.secondML.observe(this, Observer {
@@ -51,13 +47,8 @@ class MainActivity2 : AppCompatActivity() {
         })
 
 
-
 //        if (movieID != null) {
-            viewSecondVM!!.moveSecondLiveData(movieID!!)
-
-
-
-
+        viewSecondVM!!.moveSecondLiveData(movieID!!)
 
 
     }
