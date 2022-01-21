@@ -9,7 +9,4 @@ val dataDi = module {
     single<MovieRepo>{
         MovieRepoImpl()
     }
-
-
-
 }
