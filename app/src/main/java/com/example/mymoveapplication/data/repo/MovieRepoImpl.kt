@@ -2,6 +2,7 @@ package com.example.mymoveapplication.data.repo
 
 import android.util.Log
 import com.example.mymoveapplication.data.net.RetrofitClient
+import com.example.mymoveapplication.data.net.RetrofitServieces
 import com.example.mymoveapplication.data.pojo.movie.MoveData
 import com.example.mymoveapplication.data.pojo.movie.MovieData
 import com.example.mymoveapplication.data.pojo.movie.MovieDetails
@@ -11,15 +12,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MovieRepoImpl : MovieRepo {
+class MovieRepoImpl(
+    private val api:RetrofitServieces
+) : MovieRepo {
 
     override fun getMovies(
         callback: (List<MoveData>) -> Unit,
         errorCallback: (Throwable) -> Unit,
     ) {
-
-
-        RetrofitClient.getClient().getMovieList("ebd618f162ffeafbcae3dab64b5aa6a2")
+        api.getMovieList("ebd618f162ffeafbcae3dab64b5aa6a2")
             .enqueue(object : Callback<MovieData> {
                 override fun onResponse(
                     call: Call<MovieData>,
@@ -50,7 +51,7 @@ class MovieRepoImpl : MovieRepo {
         id: String,
         callback: (MovieDetails) -> Unit
     ) {
-        RetrofitClient.getClient().getCurrentMovie(id,"ebd618f162ffeafbcae3dab64b5aa6a2")
+        api.getCurrentMovie(id,"ebd618f162ffeafbcae3dab64b5aa6a2")
             .enqueue(object : Callback<MovieDetails> {
                 override fun onResponse(
                     call: Call<MovieDetails>,

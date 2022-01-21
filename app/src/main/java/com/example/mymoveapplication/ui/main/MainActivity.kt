@@ -5,19 +5,17 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mymoveapplication.R
 import com.example.mymoveapplication.data.pojo.movie.MoveData
 import com.example.mymoveapplication.ui.main.adapter.MoveAdapter
-import com.example.mymoveapplication.ui.utlis.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val adapter = MoveAdapter  {
-      toMainActivity2(it)
+    private val adapter = MoveAdapter {
+        toMainActivity2(it)
     }
 
 //        this::toMainActivity2)
@@ -53,9 +51,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun toMainActivity2(moveData: MoveData){
+    fun toMainActivity2(moveData: MoveData) {
         val intent = Intent(this, MainActivity2::class.java).apply {
-            putExtra(KEY_TO_SECOND_ACTIVITY,moveData.id)
+            putExtra(KEY_TO_SECOND_ACTIVITY, moveData.id)
         }
         startActivity(intent)
     }
