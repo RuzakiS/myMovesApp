@@ -5,10 +5,14 @@
       <map>
         <entry key="..\:/Users/User/AndroidStudioProjects/MyMoveApplication/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2203125" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyMoveApplication/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2203125" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/MyMoveApplication/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyMoveApplication/app/src/main/res/layout/activity_main.xml" value="0.18611111111111112" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyMoveApplication/app/src/main/res/layout/activity_main2.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyMoveApplication/app/src/main/res/layout/fragment_layout.xml" value="0.2" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyMoveApplication/app/src/main/res/layout/fragment_second_layout.xml" value="0.33" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyMoveApplication/app/src/main/res/layout/move_item.xml" value="0.25" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyMoveApplication/app/src/main/res/layout/move_item2.xml" value="0.33" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyMoveApplication/app/src/main/res/layout/movie_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyMoveApplication/app/src/main/res/layout/movie_second_fragment.xml" value="0.1537037037037037" />
       </map>
     </option>
   </component>

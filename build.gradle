@@ -3,6 +3,10 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+
+        repositories {
+            google()
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.4'
