@@ -9,17 +9,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mymoveapplication.R
-import com.example.mymoveapplication.data.pojo.movie.MoveData
-import com.example.mymoveapplication.ui.main.adapter.MoveAdapter
+import com.example.mymoveapplication.data.pojo.movie.MovieData
+import com.example.mymoveapplication.ui.main.adapter.MovieAdapter
 import kotlinx.android.synthetic.main.fragment_layout.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieFragment : Fragment(R.layout.fragment_layout) {
 
-    private val adapter = MoveAdapter {
+    private val adapter = MovieAdapter {
         toMainActivity2(it)
     }
-    private val viewModel: MainViewModel by viewModel<MainViewModel>()
+    private val viewModel: MovieFragViewModel by viewModel<MovieFragViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,12 +47,12 @@ class MovieFragment : Fragment(R.layout.fragment_layout) {
 
     }
 
-    fun toMainActivity2(moveData: MoveData) {
+    fun toMainActivity2(moveData: MovieData) {
 
         val bundle = Bundle()
         bundle.putString(KEY_TO_SECOND_ACTIVITY, moveData.id)
         activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.fragmentPlace, MovieFragSecond().apply {
+            ?.replace(R.id.fragmentPlace, FragmentMovieDetails().apply {
                 arguments = bundle
             })?.commit()
     }
