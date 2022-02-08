@@ -12,9 +12,9 @@ import com.example.mymoveapplication.data.pojo.movie.MovieDetails
 import kotlinx.android.synthetic.main.fragment_second_layout.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FragmentMovieDetails : Fragment(R.layout.fragment_second_layout) {
+class MovieDetailsFragment : Fragment(R.layout.fragment_second_layout) {
 
-    private val viewModel: FragMovieDetailsViewM by viewModel<FragMovieDetailsViewM>()
+    private val viewModel: MovieDetailsViewModel by viewModel<MovieDetailsViewModel>()
 
     private val imgBaseUrl = "https://image.tmdb.org/t/p/original"
 
@@ -49,7 +49,7 @@ class FragmentMovieDetails : Fragment(R.layout.fragment_second_layout) {
     }
     
     companion object {
-        fun newInstance() = MovieFragment()
+        fun newInstance() = MovieListFragment()
         const val KEY_TO_SECOND_ACTIVITY = "KEY_TO_SECOND_ACTIVITY"
     }
 }

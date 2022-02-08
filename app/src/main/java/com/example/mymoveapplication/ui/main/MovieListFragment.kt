@@ -8,18 +8,19 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mymoveapplication.R
 import com.example.mymoveapplication.data.pojo.movie.MovieData
 import com.example.mymoveapplication.ui.main.adapter.MovieAdapter
 import kotlinx.android.synthetic.main.fragment_layout.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MovieFragment : Fragment(R.layout.fragment_layout) {
+class MovieListFragment : Fragment(R.layout.fragment_layout) {
 
     private val adapter = MovieAdapter {
         toMainActivity2(it)
     }
-    private val viewModel: MovieFragViewModel by viewModel<MovieFragViewModel>()
+    private val viewModel: MovieListViewModel by viewModel<MovieListViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +33,7 @@ class MovieFragment : Fragment(R.layout.fragment_layout) {
         super.onViewCreated(view, savedInstanceState)
 
         rvFragView.layoutManager = LinearLayoutManager(requireContext())
+        var layoutManager = LinearLayoutManager(requireContext())
         rvFragView.adapter = adapter
 
         viewModel.movesLD.observe(this, Observer {
@@ -44,22 +46,33 @@ class MovieFragment : Fragment(R.layout.fragment_layout) {
                 .show()
         })
 
+        rvFragView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
 
+                if (!recyclerView.canScrollVertically(1)) {
+
+                    viewModel.moveList()
+                    Toast.makeText(requireContext(), "Last", Toast.LENGTH_LONG).show();
+
+                }
+        }
+        })
     }
+
 
     fun toMainActivity2(moveData: MovieData) {
 
         val bundle = Bundle()
         bundle.putString(KEY_TO_SECOND_ACTIVITY, moveData.id)
         activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.fragmentPlace, FragmentMovieDetails().apply {
+            ?.replace(R.id.fragmentPlace, MovieDetailsFragment().apply {
                 arguments = bundle
             })?.commit()
     }
 
 
     companion object {
-        fun newInstance() = MovieFragment()
+        fun newInstance() = MovieListFragment()
         const val KEY_TO_SECOND_ACTIVITY = "KEY_TO_SECOND_ACTIVITY"
     }
 

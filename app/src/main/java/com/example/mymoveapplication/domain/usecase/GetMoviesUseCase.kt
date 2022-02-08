@@ -7,7 +7,7 @@ class GetMoviesUseCase(
     private val moviesRepo: MovieRepo
 ) {
 
-    suspend fun execute(): List<MovieData> {
-        return moviesRepo.getMovies()
+    suspend fun execute(page: Int): List<MovieData> {
+        return moviesRepo.getMovies(page)
     }
 }

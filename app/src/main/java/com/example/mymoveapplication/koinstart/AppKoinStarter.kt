@@ -13,7 +13,6 @@ class AppKoinStarter : Application() {
     override fun onCreate() {
         super.onCreate()
 
-
         startKoin {
             modules(listOf(uiViewModelCreate, domainDi, dataDi, retrofitDi))
         }

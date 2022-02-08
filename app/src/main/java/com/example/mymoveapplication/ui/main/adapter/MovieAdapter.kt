@@ -16,6 +16,7 @@ class MovieAdapter(
 
     private val imgBaseUrl = "https://image.tmdb.org/t/p/original"
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoveHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.move_item, parent, false)
         return MoveHolder(view)
@@ -33,8 +34,8 @@ class MovieAdapter(
         notifyDataSetChanged()
     }
 
-    inner class MoveHolder(item: View) : RecyclerView.ViewHolder(item) {
 
+    inner class MoveHolder(item: View) : RecyclerView.ViewHolder(item) {
 
         fun bind(move: MovieData) {
             itemView.imgLief.setOnClickListener {
@@ -46,12 +47,6 @@ class MovieAdapter(
             Glide.with(itemView.context)
                 .load(imgBaseUrl + move.posterPath)
                 .into(itemView.imgLief)
-//            Glide.with(itemView.context)
-//                .load(imgBaseUrl + move.posterPath)
-//                .into(itemView.imgMDetails)
-//            itemView..text = move.voteAverage?.toString()?:"0"
-//            itemView..text = move.originalTitle?:""
-//            itemView..text = move.overview?:""
         }
     }
 }

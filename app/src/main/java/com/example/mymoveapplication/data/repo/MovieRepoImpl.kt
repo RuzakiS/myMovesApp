@@ -9,13 +9,13 @@ class MovieRepoImpl(
     private val api: RetrofitServieces
 ) : MovieRepo {
 
-    override suspend fun getMovies(): List<MovieData> {
-        val movieResponse = api.getMovieList("ebd618f162ffeafbcae3dab64b5aa6a2")
+    override suspend fun getMovies(page: Int): List<MovieData> {
+        val movieResponse = api.getMovieList(page)
         return movieResponse.results ?: emptyList()
     }
 
     override suspend fun getMovie(id: String): MovieDetails {
-        val movieDetails = api.getCurrentMovie(id, "ebd618f162ffeafbcae3dab64b5aa6a2")
+        val movieDetails = api.getCurrentMovie(id)
         return movieDetails
     }
 }

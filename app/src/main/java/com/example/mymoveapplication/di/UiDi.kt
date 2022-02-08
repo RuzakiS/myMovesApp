@@ -1,22 +1,22 @@
 package com.example.mymoveapplication.di
 
-import com.example.mymoveapplication.ui.main.FragMovieDetailsViewM
-import com.example.mymoveapplication.ui.main.MovieFragViewModel
+import com.example.mymoveapplication.ui.main.MovieDetailsViewModel
+import com.example.mymoveapplication.ui.main.MovieListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val uiViewModelCreate = module {
 
-    viewModel<MovieFragViewModel> {
+    viewModel<MovieListViewModel> {
 
-        MovieFragViewModel(
+        MovieListViewModel(
             getMoviesUseCase = get(),
         )
     }
 
-    viewModel<FragMovieDetailsViewM> {
+    viewModel<MovieDetailsViewModel> {
 
-        FragMovieDetailsViewM(
+        MovieDetailsViewModel(
             getMovieDetailsUseCase = get()
         )
     }

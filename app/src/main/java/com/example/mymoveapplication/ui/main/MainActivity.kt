@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentPlace, MovieFragment()).commit()
+            .replace(R.id.fragmentPlace, MovieListFragment()).commit()
     }
 }
 
