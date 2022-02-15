@@ -9,9 +9,7 @@ import retrofit2.http.Query
 interface RetrofitServieces {
 
     @GET("movie/popular")
-    suspend fun getMovieList(
-        @Query("page") page:Int
-    ): MovieResponse
+    suspend fun getMovieList(@Query("page") page: Int): MovieResponse
 
     @GET("movie/{movie_id}")
     suspend fun getCurrentMovie(

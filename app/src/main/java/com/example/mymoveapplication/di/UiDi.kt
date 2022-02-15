@@ -11,6 +11,7 @@ val uiViewModelCreate = module {
 
         MovieListViewModel(
             getMoviesUseCase = get(),
+            getMovieResponseUseCase = get()
         )
     }
 
@@ -20,6 +21,7 @@ val uiViewModelCreate = module {
             getMovieDetailsUseCase = get()
         )
     }
+
 
 
 }

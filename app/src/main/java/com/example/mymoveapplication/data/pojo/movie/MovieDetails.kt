@@ -5,8 +5,6 @@ import java.io.Serializable
 
 data class MovieDetails(
 
-
-
     @SerializedName("adult")
     val adult: Boolean? = null,
 

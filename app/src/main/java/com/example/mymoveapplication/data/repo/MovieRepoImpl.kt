@@ -3,6 +3,7 @@ package com.example.mymoveapplication.data.repo
 import com.example.mymoveapplication.data.net.RetrofitServieces
 import com.example.mymoveapplication.data.pojo.movie.MovieData
 import com.example.mymoveapplication.data.pojo.movie.MovieDetails
+import com.example.mymoveapplication.data.pojo.movie.MovieResponse
 import com.example.mymoveapplication.domain.repo.MovieRepo
 
 class MovieRepoImpl(
@@ -14,9 +15,15 @@ class MovieRepoImpl(
         return movieResponse.results ?: emptyList()
     }
 
-    override suspend fun getMovie(id: String): MovieDetails {
+    override suspend fun getMovieDetails(id: String): MovieDetails {
         val movieDetails = api.getCurrentMovie(id)
         return movieDetails
+    }
+
+    override suspend fun getResponse(page: Int): MovieResponse {
+        val moviePageResponse = api.getMovieList(page)
+        return moviePageResponse
+
     }
 }
 //

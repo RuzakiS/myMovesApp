@@ -7,6 +7,6 @@ class GetMovieDetailsUseCase(
     private val moviesRepo: MovieRepo
 ) {
     suspend fun execute(id: String): MovieDetails {
-       return moviesRepo.getMovie(id)
+       return moviesRepo.getMovieDetails(id)
     }
 }

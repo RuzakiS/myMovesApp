@@ -7,19 +7,22 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.mymoveapplication.R
 import com.example.mymoveapplication.data.pojo.movie.MovieData
-import com.example.mymoveapplication.ui.main.adapter.MovieAdapter
+import com.example.mymoveapplication.ui.main.adapter.PagingMovieAdapter
 import kotlinx.android.synthetic.main.fragment_layout.*
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieListFragment : Fragment(R.layout.fragment_layout) {
 
-    private val adapter = MovieAdapter {
+    private val pagingAdapter = PagingMovieAdapter {
         toMainActivity2(it)
     }
+
     private val viewModel: MovieListViewModel by viewModel<MovieListViewModel>()
 
     override fun onCreateView(
@@ -34,29 +37,38 @@ class MovieListFragment : Fragment(R.layout.fragment_layout) {
 
         rvFragView.layoutManager = LinearLayoutManager(requireContext())
         var layoutManager = LinearLayoutManager(requireContext())
-        rvFragView.adapter = adapter
+        rvFragView.adapter = pagingAdapter
+
+        rvFragView.apply {
+            layoutManager
+            setHasFixedSize(true)
+            adapter = pagingAdapter
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.movies.collectLatest {
+                pagingAdapter.submitData(it)
+            }
+        }
+
 
         viewModel.movesLD.observe(this, Observer {
-            adapter.update(it)
+            pagingAdapter.update(it)
         })
-        viewModel.moveList()
+//        viewModel.moveList()
 
         viewModel.errorExp.observe(this, Observer {
             Toast.makeText(requireContext(), "Error Found, or Some Wrong", Toast.LENGTH_SHORT)
                 .show()
         })
 
-        rvFragView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-
-                if (!recyclerView.canScrollVertically(1)) {
-
-                    viewModel.moveList()
-                    Toast.makeText(requireContext(), "Last", Toast.LENGTH_LONG).show();
-
-                }
-        }
-        })
+//        rvFragView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                if (!recyclerView.canScrollVertically(1)) {
+//                    viewModel.moveList()
+//                    Toast.makeText(requireContext(), "Last Item", Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        })
     }
 
 
@@ -72,7 +84,6 @@ class MovieListFragment : Fragment(R.layout.fragment_layout) {
 
 
     companion object {
-        fun newInstance() = MovieListFragment()
         const val KEY_TO_SECOND_ACTIVITY = "KEY_TO_SECOND_ACTIVITY"
     }
 
