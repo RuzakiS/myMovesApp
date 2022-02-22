@@ -36,6 +36,10 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_second_layout) {
             bind(it)
         })
 
+        noteButton.setOnClickListener {
+            DialogFragment().show(
+            childFragmentManager, DialogFragment.TAG)
+        }
     }
 
     fun bind(movie: MovieDetails) {

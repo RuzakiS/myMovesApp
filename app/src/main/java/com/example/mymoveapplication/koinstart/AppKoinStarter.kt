@@ -5,6 +5,7 @@ import com.example.mymoveapplication.di.dataDi
 import com.example.mymoveapplication.di.domainDi
 import com.example.mymoveapplication.di.uiViewModelCreate
 import com.example.mymoveapplication.netmodule.retrofitDi
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 
@@ -15,6 +16,7 @@ class AppKoinStarter : Application() {
 
         startKoin {
             modules(listOf(uiViewModelCreate, domainDi, dataDi, retrofitDi))
+            androidContext(this@AppKoinStarter)
         }
     }
 }

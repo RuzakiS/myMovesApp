@@ -32,10 +32,6 @@ open class MovieListViewModel(
     val errorExp: LiveData<Throwable>
         get() = _errorExp
 
-//    private var page = 0
-//    private var isLoading: Boolean = false
-//    private var isLastPageLoad: Boolean = false
-
 
     val movies: Flow<PagingData<MovieData>> = Pager(PagingConfig(pageSize = 20)) {
         MovieDetailsPagingDataSource { getMovieResponseUseCase.execute(it) }
@@ -55,11 +51,9 @@ open class MovieListViewModel(
                 _movesLD.value = getMoviesUseCase.execute(page)
             }
         }
-
     }
-
-
 }
+
 
 //    fun moveList() {
 //        viewModelScope.launch(Dispatchers.IO) {
